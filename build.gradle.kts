@@ -11,6 +11,11 @@ repositories {
 }
 
 dependencies {
+    // Ktor
+    val ktorVersion = "2.3.8"
+    implementation("io.ktor:ktor-server-core:$ktorVersion")
+    implementation("io.ktor:ktor-server-netty:$ktorVersion")
+
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 
