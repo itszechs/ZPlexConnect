@@ -24,6 +24,6 @@ kotlin {
 
 tasks.withType<Jar> {
     manifest {
-        attributes["Main-Class"] = "zechs.contri.sync.MainKt"
+        attributes["Main-Class"] = "zechs.zplex.connect.MainKt"
     }
 }
