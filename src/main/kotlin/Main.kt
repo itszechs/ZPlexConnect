@@ -1,5 +1,7 @@
 package zechs.zplex.connect
 
+import io.ktor.server.application.ApplicationStarted
+import io.ktor.server.application.ApplicationStopped
 import io.ktor.server.engine.applicationEngineEnvironment
 import io.ktor.server.engine.connector
 import io.ktor.server.engine.embeddedServer
@@ -10,6 +12,15 @@ fun main() {
     embeddedServer(Netty, applicationEngineEnvironment {
         module {
             remotePlayRoute()
+
+            environment.monitor.subscribe(ApplicationStarted) {
+                println("ZPlex Connect started!")
+            }
+            environment.monitor.subscribe(ApplicationStopped) {
+                println("ZPlex Connect stopped!")
+                environment.monitor.unsubscribe(ApplicationStarted) {}
+                environment.monitor.unsubscribe(ApplicationStopped) {}
+            }
         }
         connector {
             host = "0.0.0.0"
