@@ -16,6 +16,9 @@ dependencies {
     implementation("io.ktor:ktor-server-core:$ktorVersion")
     implementation("io.ktor:ktor-server-netty:$ktorVersion")
 
+    // Logging
+    implementation("ch.qos.logback:logback-classic:1.5.0")
+
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 
