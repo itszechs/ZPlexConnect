@@ -10,6 +10,7 @@ import io.ktor.server.routing.head
 import io.ktor.server.routing.post
 import io.ktor.server.routing.routing
 import zechs.zplex.connect.models.RemotePlay
+import zechs.zplex.connect.utils.getMpvCommand
 
 fun Application.remotePlayRoute() {
     routing {
@@ -21,8 +22,10 @@ fun Application.remotePlayRoute() {
         }
         post("/remote-play") {
             val remotePlay = call.receive<RemotePlay>()
-            println("Remote play: $remotePlay")
+            println("Remote play: ${remotePlay.title}")
             call.respond(HttpStatusCode.OK)
+            val command = getMpvCommand(remotePlay.title, remotePlay.watchUrl, remotePlay.token)
+            Runtime.getRuntime().exec("cmd.exe /c start  $command ")
         }
     }
 }
