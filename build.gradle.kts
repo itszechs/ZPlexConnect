@@ -11,6 +11,16 @@ repositories {
 }
 
 dependencies {
+    // Ktor
+    val ktorVersion = "2.3.8"
+    implementation("io.ktor:ktor-server-core:$ktorVersion")
+    implementation("io.ktor:ktor-server-netty:$ktorVersion")
+    implementation("io.ktor:ktor-server-content-negotiation:$ktorVersion")
+    implementation("io.ktor:ktor-serialization-gson:$ktorVersion")
+
+    // Logging
+    implementation("ch.qos.logback:logback-classic:1.5.0")
+
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 
@@ -24,6 +34,6 @@ kotlin {
 
 tasks.withType<Jar> {
     manifest {
-        attributes["Main-Class"] = "zechs.contri.sync.MainKt"
+        attributes["Main-Class"] = "zechs.zplex.connect.MainKt"
     }
 }
